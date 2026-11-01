@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#020711">
+        <meta name="description" content="ELARA: descubre películas, series y anime.">
+        <title>Bienvenido a ELARA</title>
+        <link rel="icon" href="assets/icons/logo.png">
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/components.css">
+    </head>
+    <body class="welcome-state" data-page="home">
+        <div class="background-layer" aria-hidden="true"></div>
+        <div class="background-overlay" aria-hidden="true"></div>
+        <main id="main-content">
+            <section id="welcome-screen" class="welcome-screen">
+                <section class="welcome-card" aria-labelledby="welcome-title">
+                    <div class="welcome-card__inner">
+                        <img
+                            class="welcome-logo"
+                            src="assets/icons/logo.png"
+                            alt="ELARA"
+                            width="180"
+                            height="180"
+                        >
+                        <p class="eyebrow">CINE · SERIES · ANIME</p>
+                        <h1 id="welcome-title">Historias que<br><span>permanecen.</span></h1>
+                        <p class="welcome-message">Tu próxima historia comienza aquí.</p>
+                        <button id="enter-elara" class="button button--gold welcome-button" type="button">
+                            Entrar a ELARA
+                            <span aria-hidden="true">→</span>
+                        </button>
+                        <span class="welcome-card__signature">UNA EXPERIENCIA CINEMATOGRÁFICA</span>
+                    </div>
+                </section>
+            </section>
+            <section id="main-view" class="main-view" tabindex="-1" hidden>
+                <header id="site-header" class="site-header"></header>
+                <div class="app-content">
+                    <section class="hero-panel">
+                        <p class="eyebrow">ELARA · CINE, SERIES & ANIME</p>
+                        <h1>Historias que<br><span>permanecen.</span></h1>
+                        <p class="hero-copy">
+                            Explora un catálogo seleccionado, descubre nuevas historias y comparte
+                            tu mirada con la comunidad.
+                        </p>
+                        <a class="button button--gold" href="pages/catalog.html">
+                            Explorar catálogo
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    </section>
+                    <section class="welcome-note panel">
+                        <span class="section-kicker">UNA EXPERIENCIA PARA CADA MIRADA</span>
+                        <p>
+                            Encuentra películas, series y anime. Consulta reseñas reales y participa
+                            según las capacidades disponibles en ELARA.
+                        </p>
+                    </section>
+                </div>
+            </section>
+        </main>
+        <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+        <script type="module">
+            import { initShell } from "./js/components/shell.js";
+
+            const welcome = document.querySelector("#welcome-screen");
+            const mainView = document.querySelector("#main-view");
+            const enterButton = document.querySelector("#enter-elara");
+
+            enterButton.addEventListener("click", async () => {
+                enterButton.disabled = true;
+                document.body.classList.add("is-entering");
+
+                window.setTimeout(async () => {
+                    welcome.hidden = true;
+                    mainView.hidden = false;
+                    document.body.classList.remove("welcome-state", "is-entering");
+                    document.title = "Inicio — ELARA";
+                    await initShell();
+                    mainView.focus();
+                }, 360);
+            });
+        </script>
+    </body>
+</html>

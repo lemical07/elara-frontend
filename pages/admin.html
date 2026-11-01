@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#020711">
+        <title>Administración — ELARA</title>
+        <link rel="icon" href="../assets/icons/logo.png">
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="../styles/components.css">
+    </head>
+    <body data-page="admin">
+        <div class="background-layer" aria-hidden="true"></div>
+        <div class="background-overlay" aria-hidden="true"></div>
+        <header id="site-header" class="site-header"></header>
+        <main class="app-content">
+            <section class="page-heading">
+                <p class="eyebrow">ESPACIO DE GESTIÓN</p>
+                <h1>Panel <span>administrativo</span></h1>
+                <p>Administra el catálogo, las categorías, las propuestas y las cuentas.</p>
+            </section>
+            <div id="admin-status" class="section-status" aria-live="polite"></div>
+            <nav class="admin-tabs" aria-label="Secciones de administración">
+                <button type="button" class="admin-tab is-active" data-tab="proposals" aria-selected="true">Propuestas</button>
+                <button type="button" class="admin-tab" data-tab="content" aria-selected="false">Contenido</button>
+                <button type="button" class="admin-tab" data-tab="categories" aria-selected="false">Categorías</button>
+                <button type="button" class="admin-tab" data-tab="users" aria-selected="false">Usuarios</button>
+            </nav>
+            <section id="admin-proposals" class="admin-panel panel" data-panel="proposals">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">PENDIENTES DE REVISIÓN</p>
+                        <h2>Propuestas</h2>
+                    </div>
+                    <button class="button button--quiet" type="button" data-refresh="proposals">Actualizar</button>
+                </div>
+                <div id="proposals-status" class="section-status"></div>
+                <div id="proposals-list" class="admin-list"></div>
+            </section>
+            <section id="admin-content" class="admin-panel panel" data-panel="content" hidden>
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">CATÁLOGO APROBADO</p>
+                        <h2>Contenido</h2>
+                    </div>
+                    <button class="button button--gold" type="button" id="new-content-button">Añadir contenido</button>
+                </div>
+                <div id="content-admin-status" class="section-status"></div>
+                <form id="content-form" class="data-form" hidden></form>
+                <div id="content-admin-list" class="admin-list"></div>
+                <section id="character-admin-panel" class="character-admin panel" hidden>
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">ELENCO DEL TÍTULO</p>
+                            <h3 id="character-admin-title">Personajes</h3>
+                        </div>
+                        <div class="inline-actions">
+                            <button class="button button--gold button--small" type="button" id="new-character-button">Añadir personaje</button>
+                            <button class="button button--quiet button--small" type="button" id="close-characters">Cerrar</button>
+                        </div>
+                    </div>
+                    <div id="characters-status" class="section-status" aria-live="polite"></div>
+                    <form id="character-form" class="data-form form-inset" hidden></form>
+                    <div id="characters-list" class="admin-list"></div>
+                </section>
+            </section>
+            <section id="admin-categories" class="admin-panel panel" data-panel="categories" hidden>
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">ORGANIZACIÓN DEL CATÁLOGO</p>
+                        <h2>Categorías</h2>
+                    </div>
+                    <button class="button button--gold" type="button" id="new-category-button">Añadir categoría</button>
+                </div>
+                <div id="categories-admin-status" class="section-status"></div>
+                <form id="category-form" class="data-form" hidden></form>
+                <div id="categories-admin-list" class="admin-list"></div>
+            </section>
+            <section id="admin-users" class="admin-panel panel" data-panel="users" hidden>
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">CUENTAS REGISTRADAS</p>
+                        <h2>Usuarios</h2>
+                    </div>
+                    <button class="button button--quiet" type="button" data-refresh="users">Actualizar</button>
+                </div>
+                <div id="users-admin-status" class="section-status"></div>
+                <form id="user-form" class="data-form panel form-inset" hidden></form>
+                <div id="users-admin-list" class="admin-list"></div>
+            </section>
+        </main>
+        <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+        <script type="module" src="../js/pages/admin.js"></script>
+    </body>
+</html>

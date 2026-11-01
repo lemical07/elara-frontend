@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#020711">
+  <title>Detalle — ELARA</title>
+  <link rel="icon" href="../assets/icons/logo.png">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/components.css">
+</head>
+
+<body data-page="details">
+  <div class="background-layer" aria-hidden="true"></div>
+  <div class="background-overlay" aria-hidden="true"></div>
+
+  <header id="site-header" class="site-header"></header>
+  
+  <main class="app-content">
+    <a class="back-link" href="catalog.html">← Volver al catálogo</a>
+    <div id="detail-status" class="section-status" aria-live="polite"></div>
+    <section id="content-detail"></section>
+    <section class="review-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">VOCES DE LA COMUNIDAD</p><h2>Reseñas</h2></div>
+      </div>
+      <div id="review-form-area"></div>
+      <div id="reviews-status" class="section-status" aria-live="polite"></div>
+      <div id="reviews-list" class="review-list"></div>
+    </section>
+  </main>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="../js/pages/details.js"></script>
+</body>
+</html>

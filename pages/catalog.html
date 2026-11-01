@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#020711">
+        <title>Catálogo — ELARA</title>
+        <link rel="icon" href="../assets/icons/logo.png">
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="../styles/components.css">
+    </head>
+    <body data-page="catalog">
+        <div class="background-layer" aria-hidden="true"></div>
+        <div class="background-overlay" aria-hidden="true"></div>
+        <header id="site-header" class="site-header"></header>
+        <main class="app-content">
+            <section class="page-heading">
+                <p class="eyebrow">UNA SELECCIÓN PARA TI</p>
+                <h1>Catálogo <span>ELARA</span></h1>
+                <p>Películas, series y anime para tu próxima noche de historias.</p>
+                <button
+                    id="proposal-toggle"
+                    class="button button--quiet"
+                    type="button"
+                    hidden
+                >Proponer contenido</button>
+            </section>
+            <form id="proposal-form" class="data-form" hidden>
+                <div class="form-grid form-grid--two">
+                    <label>
+                        Título
+                        <input name="titulo" maxlength="50" required>
+                    </label>
+                    <label>
+                        Categoría
+                        <select name="categoria_id" id="proposal-category" required>
+                            <option value="">Selecciona una categoría</option>
+                        </select>
+                    </label>
+                    <label>
+                        Tipo
+                        <select name="tipo" required>
+                            <option value="pelicula">Película</option>
+                            <option value="serie">Serie</option>
+                            <option value="anime">Anime</option>
+                        </select>
+                    </label>
+                    <label>
+                        Año
+                        <input name="anio" type="number" min="1901" max="2155" required>
+                    </label>
+                    <label>
+                        Director
+                        <input name="director" maxlength="150">
+                    </label>
+                    <label>
+                        URL de imagen
+                        <input name="url_imagen" type="url" maxlength="500">
+                    </label>
+                    <label>
+                        URL del tráiler
+                        <input name="url_trailer" type="url" maxlength="500">
+                    </label>
+                </div>
+                <label>
+                    Descripción
+                    <textarea name="descripcion" rows="3" required></textarea>
+                </label>
+                <div class="form-actions">
+                    <button class="button button--gold" type="submit">Enviar propuesta</button>
+                </div>
+                <div id="proposal-status" class="form-status" aria-live="polite"></div>
+            </form>
+            <section class="panel filter-panel" aria-label="Filtros del catálogo">
+                <form id="catalog-filters" class="filter-form">
+                    <label class="filter-search">
+                        Buscar por título
+                        <input
+                            name="titulo"
+                            type="search"
+                            maxlength="50"
+                            placeholder="Ej. Interstellar"
+                        >
+                    </label>
+                    <label>
+                        Tipo
+                        <select name="tipo">
+                            <option value="">Todos</option>
+                            <option value="pelicula">Película</option>
+                            <option value="serie">Serie</option>
+                            <option value="anime">Anime</option>
+                        </select>
+                    </label>
+                    <label>
+                        Categoría
+                        <select name="categoria" id="category-filter">
+                            <option value="">Todas</option>
+                        </select>
+                    </label>
+                    <label>
+                        Año
+                        <input
+                            name="anio"
+                            type="number"
+                            min="1901"
+                            max="2155"
+                            inputmode="numeric"
+                            placeholder="Cualquiera"
+                        >
+                    </label>
+                    <label>
+                        Orden
+                        <select name="orden">
+                            <option value="anio_desc">Año: más reciente</option>
+                            <option value="anio_asc">Año: más antiguo</option>
+                            <option value="titulo_asc">Título: A–Z</option>
+                            <option value="titulo_desc">Título: Z–A</option>
+                        </select>
+                    </label>
+                    <div class="filter-actions">
+                        <button class="button button--gold" type="submit">Aplicar filtros</button>
+                        <button class="button button--quiet" type="reset">Limpiar</button>
+                    </div>
+                </form>
+            </section>
+            <div id="catalog-status" class="section-status" aria-live="polite"></div>
+            <section
+                id="catalog-results"
+                class="content-grid"
+                aria-label="Resultados del catálogo"
+            ></section>
+        </main>
+        <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+        <script type="module" src="../js/pages/catalog.js"></script>
+    </body>
+</html>

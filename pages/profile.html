@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#020711">
+        <title>Mi perfil — ELARA</title>
+        <link rel="icon" href="../assets/icons/logo.png">
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="../styles/components.css">
+    </head>
+    <body data-page="profile">
+        <div class="background-layer" aria-hidden="true"></div>
+        <div class="background-overlay" aria-hidden="true"></div>
+        <header id="site-header" class="site-header"></header>
+        <main class="app-content">
+            <section class="page-heading">
+                <p class="eyebrow">TU ESPACIO ELARA</p>
+                <h1>Mi <span>perfil</span></h1>
+                <p>Administra tus datos y consulta tu actividad.</p>
+            </section>
+            <div id="profile-status" class="section-status" aria-live="polite"></div>
+            <div id="profile-content" class="profile-layout"></div>
+        </main>
+        <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+        <script type="module" src="../js/pages/profile.js"></script>
+    </body>
+</html>

@@ -117,7 +117,8 @@ function renderProfile(user, reviews, reactions) {
   passwordForm.append(element("h3", { text: "Cambiar contraseña" }));
   for (const [name, label, autocomplete] of [
     ["contrasena_actual", "Contraseña actual", "current-password"],
-    ["contrasena_nueva", "Nueva contraseña (mínimo 8 caracteres)", "new-password"]
+    ["contrasena_nueva", "Nueva contraseña (mínimo 8 caracteres)", "new-password"],
+    ["contrasena_nueva_confirmacion", "Confirmar nueva contraseña", "new-password"]
   ]) {
     const field = element("label", { text: label });
     field.append(element("input", {
@@ -125,7 +126,7 @@ function renderProfile(user, reviews, reactions) {
         name,
         type: "password",
         autocomplete,
-        minlength: name === "contrasena_nueva" ? "8" : undefined,
+        minlength: name === "contrasena_nueva" || name === "contrasena_nueva_confirmacion" ? "8" : undefined,
         required: true
       }
     }));

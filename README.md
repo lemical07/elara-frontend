@@ -109,12 +109,15 @@ ELARA integra mecanismos de autenticación y control de acceso para ofrecer una 
 La interfaz de ELARA está organizada en diferentes secciones:
 
 - **Bienvenida:** pantalla de entrada con identidad visual propia.
+- **Inicialización:** el primer registro crea el rol administrador y muestra una contraseña temporal de 13 caracteres durante 60 segundos; al continuar o expirar se abre el catálogo.
 - **Catálogo:** exploración de películas, series y anime.
 - **Detalles:** consulta de información y contenido relacionado.
 - **Reseñas:** publicación y consulta de opiniones y calificaciones.
 - **Reacciones:** interacción con las reseñas mediante likes y dislikes.
 - **Perfil:** espacio de gestión de la cuenta del usuario.
 - **Administración:** herramientas para gestionar el contenido y las categorías disponibles.
+
+La contraseña inicial solo se recibe en la respuesta de registro del primer administrador; no se guarda en el navegador ni existe una ruta para recuperarla. En producción, sirve la aplicación y la API exclusivamente mediante HTTPS.
 
 ## Diseño y experiencia de usuario
 

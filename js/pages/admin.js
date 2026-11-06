@@ -398,6 +398,34 @@ if (!session || !["admin", "administrador"].includes(session.rol?.trim().toLower
         const actions = element("div", { className: "inline-actions" });
         const edit = element("button", { className: "button button--quiet button--small", text: "Editar datos", attrs: { type: "button" } });
         edit.addEventListener("click", () => openUserForm(user));
+        const esAdmin = ["admin", "administrador"].includes(user.rol?.trim().toLowerCase());
+        const cambiarRol = element("button", {
+          className: esAdmin ? "button button--quiet button--small" : "button button--gold button--small",
+          text: esAdmin ? "Retirar rol ADMIN" : "Hacer administrador",
+          attrs: { type: "button" }
+        });
+        cambiarRol.addEventListener("click", async () => {
+          const nuevoRol = esAdmin ? "USUARIO" : "ADMIN";
+          const confirmacion = await confirmAction({
+            title: esAdmin ? "Retirar rol de administrador" : "Conceder rol de administrador",
+            message: `¿${esAdmin ? "Devolver a" : "Conceder a"} ${user.nombre || user.correo} el rol ${nuevoRol}?`,
+            confirmText: esAdmin ? "Retirar rol" : "Hacer administrador"
+          });
+          if (!confirmacion) return;
+          cambiarRol.disabled = true;
+          try {
+            await api.patch(`/usuarios/${user.id}/rol`, { rol: nuevoRol });
+            await loadUsers();
+            showNotice({
+              title: "Rol actualizado",
+              message: `El usuario ahora tiene el rol ${nuevoRol}.`,
+              tone: "success"
+            });
+          } catch (error) {
+            setStatus(status, getApiMessage(error), "error");
+            cambiarRol.disabled = false;
+          }
+        });
         const active = Boolean(user.activo);
         const toggle = element("button", {
           className: active ? "button button--quiet button--small" : "button button--gold button--small",
@@ -422,7 +450,7 @@ if (!session || !["admin", "administrador"].includes(session.rol?.trim().toLower
             toggle.disabled = false;
           }
         });
-        actions.append(edit, toggle);
+        actions.append(edit, cambiarRol, toggle);
         row.append(info, actions);
         list.append(row);
       }
